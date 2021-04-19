@@ -21,8 +21,11 @@ RUN     mv phpMyAdmin-5.0.2-all-languages/ phpmyadmin
 RUN     rm phpMyAdmin-5.0.2-all-languages.tar.gz
 RUN     mv phpmyadmin/ /usr/share/webapps/
 RUN     chmod -R 777 /usr/share/webapps/
-RUN     ln -s /usr/share/webapps/phpmyadmin/ /var/www/html
 
 COPY    nginx.conf /etc/nginx/
+COPY    config.inc.php ./
+
+RUN     mv config.inc.php /usr/share/webapps/phpmyadmin/
+RUN     ln -s /usr/share/webapps/phpmyadmin/ /var/www/html
 
 CMD     php-fpm7 && nginx -g 'daemon off;'
