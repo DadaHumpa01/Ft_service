@@ -1,14 +1,16 @@
-FROM    alpine:latest
+FROM	alpine
 
-EXPOSE  3306
+COPY	setup.sh init_file my.cnf ./
 
-RUN		apk update
-RUN		apk upgrade
-RUN     apk add openrc
-RUN     apk add mariadb mariadb-common mariadb-client
+RUN		apk update && \
+		apk add --no-cache mysql mysql-client openrc
 
-RUN     mkdir /run/mysqld
+RUN		mv my.cnf /etc/
 
-COPY    setup.sh /
-COPY    wordpress.sql ./
-CMD     sh setup.sh
+RUN		mkdir /run/mysqld
+
+EXPOSE	3306
+
+RUN     chmod 755 ./setup.sh
+
+ENTRYPOINT	./setup.sh
