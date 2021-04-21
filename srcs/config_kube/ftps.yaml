@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps
+  labels:
+    app: ftps
+spec:
+  selector:
+    matchLabels:
+      app: ftps
+  template:
+    metadata:
+      labels:
+        app: ftps
+    spec:
+      containers:
+      - name: ftps
+        image: testftps:latest
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 21
+        - containerPort: 3000
+        - containerPort: 3001
+        - containerPort: 3002
+        - containerPort: 3003
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps
+  labels:
+    app: ftps
+spec:
+  ports:
+  - port: 21
+    targetPort: 21
+    protocol:  TCP
+    name: ssl
+  - port: 30000
+    targetPort: 30000
+    protocol:  TCP
+    name: pass
+  - port: 30001
+    targetPort: 30001
+    protocol:  TCP
+    name: pass1
+  - port: 30002
+    targetPort: 30002
+    protocol:  TCP
+    name: pass2
+  - port: 30003
+    targetPort: 30003
+    protocol:  TCP
+    name: pass3
+  type: LoadBalancer
+  selector:
+    app: ftps
