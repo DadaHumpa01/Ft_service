@@ -1,9 +1,11 @@
 # ft_services
 
-utenti
+### Dati degli utenti che hanno accesso al database
 
-amministratore: username: root   pass: root
-sottoscrittore: username: sott   pass: sott
-contributore:   username: cont   pass: cont
-autore:         username: auto   pass: auto
-editore:        userbame: edit   pass: edit
+| tipo di utenti  | username  | password |
+| --------------- | --------- | -------- |
+| amministratore: | root      | root     |
+| sottoscrittore: | sott      | sott     |
+| contributore:   | cont      | cont     |
+| autore:         | auto      | auto     |
+| editore:        | edit      | edit     |

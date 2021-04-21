@@ -1,3 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+  labels:
+    app: mysql
+spec:
+  capacity:
+    storage: 200M
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  hostPath:
+    path: /var/lib/mysql
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
