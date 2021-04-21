@@ -23,6 +23,25 @@ kubectl apply -f srcs/config_kube/phpmyadmin.yaml
 kubectl apply -f srcs/config_kube/wordpress.yaml
 kubectl apply -f srcs/config_kube/ftps.yaml
 
+clear
+
+#   installazione database wordpress
+
+echo "aspettando che mysql si avvi per fare l'inserimento del database"
+
+run=`kubectl get pod | grep mysql | grep Running`
+while [[ $run == '' ]]
+do
+    run=`kubectl get pod | grep mysql | grep Running`
+    printf "."
+    sleep 4
+done
+
+echo "\n"
+
+mysqlpod=`kubectl get pods | grep mysql | tr ' ' '\n' | head -n 1`
+kubectl exec $mysqlpod -- sh dump.sh
+
 #   kubernetes dashboarh
 
 source ./srcs/dashboard.sh
