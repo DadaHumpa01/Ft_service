@@ -14,4 +14,5 @@ COPY    nginx.conf /etc/nginx/
 
 COPY    index.html mystile.css /var/www/html/
 
-CMD     sh /setup.sh
+RUN		chmod 777 ./setup.sh
+CMD		./setup.sh

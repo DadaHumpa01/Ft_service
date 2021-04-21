@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deployment
+  name: phpmyadmin
   labels:
     app: phpmyadmin
 spec:
@@ -18,18 +18,18 @@ spec:
         image: testphpmyadmin:latest
         imagePullPolicy: Never
         ports: 
-        - containerPort: 5050
+        - containerPort: 5000
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin-deployment
+  name: phpmyadmin
   labels:
     app: phpmyadmin
 spec:
   ports:
-  - port: 5050
+  - port: 5000
     targetPort: 80
   type: LoadBalancer
   selector:

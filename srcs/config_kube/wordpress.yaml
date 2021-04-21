@@ -18,7 +18,7 @@ spec:
         image: testwordpress:latest
         imagePullPolicy: Never
         ports: 
-        - containerPort: 5000
+        - containerPort: 5050
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -29,7 +29,7 @@ metadata:
     app: wordpress
 spec:
   ports:
-  - port: 5000
+  - port: 5050
     targetPort: 80
   type: LoadBalancer
   selector:
