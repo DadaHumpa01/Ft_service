@@ -1,8 +1,8 @@
-# ft_services
+# Ft_services
 
 ### Dati degli utenti che hanno accesso al database
 
-| tipo di utenti  | username  | password |
+| tipo di utenti  | username:  | password: |
 | --------------- | --------- | -------- |
 | amministratore: | root      | root     |
 | sottoscrittore: | sott      | sott     |
