@@ -4,7 +4,7 @@
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
-Kubectl apply -f srcs/config_kube/metallb.yaml
+kubectl apply -f srcs/config_kube/metallb.yaml
 
 #   applicazione dell immagini
 
@@ -29,10 +29,10 @@ clear
 
 echo "aspettando che mysql si avvi per fare l'inserimento del database"
 
-run=`kubectl get pod | grep mysql | grep Running`
-while [[ $run == '' ]]
+runna=`kubectl get pod | grep mysql | grep Running`
+while [[ $runna == '' ]]
 do
-    run=`kubectl get pod | grep mysql | grep Running`
+    runna=`kubectl get pod | grep mysql | grep Running`
     printf "."
     sleep 4
 done

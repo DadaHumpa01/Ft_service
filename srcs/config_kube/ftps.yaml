@@ -19,10 +19,10 @@ spec:
         imagePullPolicy: Never
         ports: 
         - containerPort: 21
-        - containerPort: 3000
-        - containerPort: 3001
-        - containerPort: 3002
-        - containerPort: 3003
+        - containerPort: 30000
+        - containerPort: 30001
+        - containerPort: 30002
+        - containerPort: 30003
       restartPolicy: Always
 ---
 apiVersion: v1
