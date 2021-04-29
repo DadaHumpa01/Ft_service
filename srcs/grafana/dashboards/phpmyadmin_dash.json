@@ -1,0 +1,143 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": "-- Grafana --",
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "name": "Annotations & Alerts",
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": 5,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": null,
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 9,
+		  "w": 12,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 2,
+		"options": {
+		  "colorMode": "value",
+		  "graphMode": "area",
+		  "justifyMode": "auto",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "lastNotNull"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "text": {},
+		  "textMode": "auto"
+		},
+		"pluginVersion": "7.5.3",
+		"targets": [
+		  {
+			"alias": "CPU",
+			"groupBy": [],
+			"measurement": "docker_container_cpu",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"usage_system"
+				  ],
+				  "type": "field"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "annotation.io.kubernetes.container.ports",
+				"operator": "=",
+				"value": "[{\"containerPort\":5000,\"protocol\":\"TCP\"}]"
+			  }
+			]
+		  },
+		  {
+			"alias": "MEM",
+			"groupBy": [],
+			"hide": false,
+			"measurement": "docker_container_mem",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"refId": "B",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"max_usage"
+				  ],
+				  "type": "field"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "annotation.io.kubernetes.container.ports",
+				"operator": "=",
+				"value": "[{\"containerPort\":5000,\"protocol\":\"TCP\"}]"
+			  }
+			]
+		  }
+		],
+		"title": "Panel Title",
+		"type": "stat"
+	  }
+	],
+	"refresh": false,
+	"schemaVersion": 27,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+	  "list": []
+	},
+	"time": {
+		"from": "now-15m",
+		"to": "now"
+	  },
+	"timepicker": {},
+	"timezone": "",
+	"title": "PHPMYADMIN",
+	"uid": "2vbNHQ_Gk",
+	"version": 2
+  }

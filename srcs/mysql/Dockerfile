@@ -1,7 +1,5 @@
 FROM	alpine
 
-
-
 COPY	setup.sh init_file my.cnf ./
 
 COPY	wpdb.sql ./

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
@@ -10,14 +10,10 @@ metadata:
   namespace: kubernetes-dashboard
 EOF
 
-echo "\n\n\n"
-
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" | pbcopy
 
-echo "\n\n\n"
+kubectl proxy
 
-kubectl proxy &
+#sleep 10s
 
-sleep 10s
-
-open "http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default"
+#open "http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default"
